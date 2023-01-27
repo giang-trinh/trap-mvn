@@ -1,0 +1,4538 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" layout:required="false" level="3" qual:required="true" xmlns:layout="http://www.sbml.org/sbml/level3/version1/layout/version1" version="1" xmlns:qual="http://www.sbml.org/sbml/level3/version1/qual/version1">
+  <model id="model_id">
+    <notes>
+      <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>This logical model encompasses the main transcription factors involved in mesoderm specification during stages 8 to 10 of Drosophila development.
+It encompasses 48 components and 82 regulatory interactions, providing a formal integration of diverse genetic information and an intuitive platform to visualise the complexity of the system.
+This model is sufficient to explain known phenotypes from genetic mutants and to predict novel mutant phenotypes. 
+More specifically, the model accounts for the specification of the mesoderm into its four main presumptive tissue domains: visceral muscle (VM), heart (H), somatic muscle (SM), and fat body (FB). These different domains correspond to alternative stable states, which are defined by specific combinations of transcription factors and positional clues from signalling cascades. 
+Ellipses denote Boolean nodes, whereas square boxes denote multilevel nodes. 
+Light green nodes represent factors expressed in and acting from the ectoderm. Blue and grey nodes denote factors expressed and acting in the mesoderm. 
+Green arrows denote activation, whereas red blunt end arrows denote inhibitions. 
+This model has been defined and analysed using the software GINsim (http://ginsim.org). 
+To each regulatory node is associated a logical rule defining its behaviour depending on regulatory inputs.
+</p>
+  </body>
+    </notes>
+    <layout:listOfLayouts xmlns:layout="http://www.sbml.org/sbml/level3/version1/layout/version1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+      <layout:layout layout:id="__layout__">
+        <layout:dimensions layout:height="769" layout:width="1392"/>
+        <layout:listOfAdditionalGraphicalObjects>
+          <layout:generalGlyph layout:id="_ly_Delta" layout:reference="Delta">
+            <layout:boundingBox>
+              <layout:position layout:x="146" layout:y="718"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Dpp" layout:reference="Dpp">
+            <layout:boundingBox>
+              <layout:position layout:x="1157" layout:y="35"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_En" layout:reference="En">
+            <layout:boundingBox>
+              <layout:position layout:x="784" layout:y="179"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Hh" layout:reference="Hh">
+            <layout:boundingBox>
+              <layout:position layout:x="205" layout:y="29"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Med" layout:reference="Med">
+            <layout:boundingBox>
+              <layout:position layout:x="915" layout:y="216"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Pyr" layout:reference="Pyr">
+            <layout:boundingBox>
+              <layout:position layout:x="1129" layout:y="720"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Shn" layout:reference="Shn">
+            <layout:boundingBox>
+              <layout:position layout:x="992" layout:y="32"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Spi" layout:reference="Spi">
+            <layout:boundingBox>
+              <layout:position layout:x="1299" layout:y="37"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_SuH" layout:reference="SuH">
+            <layout:boundingBox>
+              <layout:position layout:x="226" layout:y="295"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Ths" layout:reference="Ths">
+            <layout:boundingBox>
+              <layout:position layout:x="976" layout:y="722"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Upd" layout:reference="Upd">
+            <layout:boundingBox>
+              <layout:position layout:x="476" layout:y="31"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Wg" layout:reference="Wg">
+            <layout:boundingBox>
+              <layout:position layout:x="1312" layout:y="723"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Bap" layout:reference="Bap">
+            <layout:boundingBox>
+              <layout:position layout:x="730" layout:y="496"/>
+              <layout:dimensions layout:height="45" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Bin" layout:reference="Bin">
+            <layout:boundingBox>
+              <layout:position layout:x="724" layout:y="567"/>
+              <layout:dimensions layout:height="45" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Brk" layout:reference="Brk">
+            <layout:boundingBox>
+              <layout:position layout:x="998" layout:y="175"/>
+              <layout:dimensions layout:height="45" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Ci" layout:reference="Ci">
+            <layout:boundingBox>
+              <layout:position layout:x="543" layout:y="210"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Da" layout:reference="Da">
+            <layout:boundingBox>
+              <layout:position layout:x="397" layout:y="716"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Dsix4" layout:reference="Dsix4">
+            <layout:boundingBox>
+              <layout:position layout:x="1041" layout:y="403"/>
+              <layout:dimensions layout:height="45" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Dome" layout:reference="Dome">
+            <layout:boundingBox>
+              <layout:position layout:x="475" layout:y="141"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Der" layout:reference="Der">
+            <layout:boundingBox>
+              <layout:position layout:x="1301" layout:y="143"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Doc" layout:reference="Doc">
+            <layout:boundingBox>
+              <layout:position layout:x="954" layout:y="568"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Emc" layout:reference="Emc">
+            <layout:boundingBox>
+              <layout:position layout:x="259" layout:y="714"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_E_S" layout:reference="E_S">
+            <layout:boundingBox>
+              <layout:position layout:x="329" layout:y="368"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Eve" layout:reference="Eve">
+            <layout:boundingBox>
+              <layout:position layout:x="845" layout:y="357"/>
+              <layout:dimensions layout:height="45" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Eya" layout:reference="Eya">
+            <layout:boundingBox>
+              <layout:position layout:x="774" layout:y="723"/>
+              <layout:dimensions layout:height="45" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Hbr" layout:reference="Hbr">
+            <layout:boundingBox>
+              <layout:position layout:x="1299" layout:y="469"/>
+              <layout:dimensions layout:height="45" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Htl" layout:reference="Htl">
+            <layout:boundingBox>
+              <layout:position layout:x="1057" layout:y="465"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Hop" layout:reference="Hop">
+            <layout:boundingBox>
+              <layout:position layout:x="599" layout:y="143"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Mad" layout:reference="Mad">
+            <layout:boundingBox>
+              <layout:position layout:x="1003" layout:y="275"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Mef2" layout:reference="Mef2">
+            <layout:boundingBox>
+              <layout:position layout:x="610" layout:y="429"/>
+              <layout:dimensions layout:height="45" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Nicd" layout:reference="Nicd">
+            <layout:boundingBox>
+              <layout:position layout:x="262" layout:y="457"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Notch" layout:reference="Notch">
+            <layout:boundingBox>
+              <layout:position layout:x="153" layout:y="454"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Pan" layout:reference="Pan">
+            <layout:boundingBox>
+              <layout:position layout:x="1310" layout:y="642"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Pka" layout:reference="Pka">
+            <layout:boundingBox>
+              <layout:position layout:x="369" layout:y="207"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Pnr" layout:reference="Pnr">
+            <layout:boundingBox>
+              <layout:position layout:x="834" layout:y="538"/>
+              <layout:dimensions layout:height="45" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Pnt" layout:reference="Pnt">
+            <layout:boundingBox>
+              <layout:position layout:x="1140" layout:y="359"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Poxm" layout:reference="Poxm">
+            <layout:boundingBox>
+              <layout:position layout:x="1149" layout:y="526"/>
+              <layout:dimensions layout:height="45" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Ptc" layout:reference="Ptc">
+            <layout:boundingBox>
+              <layout:position layout:x="202" layout:y="127"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Ras" layout:reference="Ras">
+            <layout:boundingBox>
+              <layout:position layout:x="1305" layout:y="250"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Rl" layout:reference="Rl">
+            <layout:boundingBox>
+              <layout:position layout:x="1306" layout:y="359"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Slp" layout:reference="Slp">
+            <layout:boundingBox>
+              <layout:position layout:x="489" layout:y="306"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Smo" layout:reference="Smo">
+            <layout:boundingBox>
+              <layout:position layout:x="367" layout:y="129"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Srp" layout:reference="Srp">
+            <layout:boundingBox>
+              <layout:position layout:x="642" layout:y="323"/>
+              <layout:dimensions layout:height="40" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Stat92E" layout:reference="Stat92E">
+            <layout:boundingBox>
+              <layout:position layout:x="595" layout:y="264"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Tin" layout:reference="Tin">
+            <layout:boundingBox>
+              <layout:position layout:x="778" layout:y="415"/>
+              <layout:dimensions layout:height="45" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Tkv" layout:reference="Tkv">
+            <layout:boundingBox>
+              <layout:position layout:x="1162" layout:y="277"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Twi" layout:reference="Twi">
+            <layout:boundingBox>
+              <layout:position layout:x="460" layout:y="452"/>
+              <layout:dimensions layout:height="45" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+          <layout:generalGlyph layout:id="_ly_Zfh1" layout:reference="Zfh1">
+            <layout:boundingBox>
+              <layout:position layout:x="589" layout:y="606"/>
+              <layout:dimensions layout:height="46" layout:width="80"/>
+            </layout:boundingBox>
+          </layout:generalGlyph>
+        </layout:listOfAdditionalGraphicalObjects>
+      </layout:layout>
+    </layout:listOfLayouts>
+    <qual:listOfQualitativeSpecies xmlns:qual="http://www.sbml.org/sbml/level3/version1/qual/version1">
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_44f911e9-8c97-4a1a-bf56-7e424ea3a332" qual:id="Delta" qual:constant="true" qual:name="Delta or Dl">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Delta is expressed throughout the mesoderm at late stage 9 and stage 10.
+Delta is a ligand for the Notch signaling pathway (Kooh et al.,1993).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_44f911e9-8c97-4a1a-bf56-7e424ea3a332">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:8330521"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0000463.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P10041"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/neural/delta.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_32fa119e-3354-40cf-8ee7-79545dcbc8df" qual:id="Dpp" qual:constant="true" qual:name="Decanpetaplegic">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Decapentaplegic (Dpp) is required in the specification of dorsal derivatives. 
+In the model, Dpp is provided as an initial self-sustained input, which represents the presence of external Dpp signal.
+Dpp regulates its target genes through two mechanisms: directly by activating gene expression and indirectly by Shn-dependent repression of Brk (Yao et al., 2008).
+</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_32fa119e-3354-40cf-8ee7-79545dcbc8df">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:18506030"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0000490.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/sites/fly/torstoll/decapen1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P07713"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_6c6bed23-dd16-4df6-8c93-eeb2b5c012dc" qual:id="En" qual:constant="true" qual:name="Engrailed">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Engrailed (En) is expressed early due to the expression of even-skipped, which activates En. En promotes the development of VM and dorsolateral FB (Azpiazu et al., 1996; Reichmann et al., 1998).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_6c6bed23-dd16-4df6-8c93-eeb2b5c012dc">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:8985186"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:9435291"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0000577.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P02836"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/segment/engrail1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_45af9eef-b6e0-4a7b-855b-4eb46d4ac11d" qual:id="Hh" qual:constant="true" qual:name="Hh exterior input">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Hedgehog (Hh) is a segment polarity gene (Nusslein- Volhard and Wieschaus, 1980; Lee et al., 1992) encoding a 47-kD protein that undergoes an intramolecular cleavage to yield a mature, N-terminal signaling polypeptide.
+Binding of Hh to Patched (Ptc) initiates pathway response (Michelson et al., 2003). 
+</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_45af9eef-b6e0-4a7b-855b-4eb46d4ac11d">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:6776413"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:1394430"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:12881613"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0004644.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/segment/hedghog1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/Q02936"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_1b4c2657-6d41-43dc-971b-6f4b206c439b" qual:id="Med" qual:constant="true" qual:name="Medea">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Mothers against dpp (Mad) and Medea (Med) transduce Dpp signal during Mesoderm specification (from stage 8 to 10 or 11) Dpp signaling is initiated by binding of the ligand to a complex of the type I and type II serine/threonine kinase receptors, including Tkv. 
+Activated Tkv phosphorylates the BMP specific Mad, leading to its association with the co-Smad Med and accumulation of the Mad/Med complex in the nucleus. 
+Mad and Med-binding sites have been found in the promoters of many Dpp responsive genes (Xu et al., 1998 and Yao et al., 2008).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_1b4c2657-6d41-43dc-971b-6f4b206c439b">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:9694800"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:18506030"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0011655.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/torstoll/medea1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P42003"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_2c88e85f-9abc-4f10-a957-3633566f8dbb" qual:id="Pyr" qual:constant="true" qual:name="Pyramus">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Thisbe (Ths) and Pyramus (Pyr), encode FGF signaling molecules that appear to function in a partially redundant fashion to activate Htl. 
+They are required for the development of different mesoderm lineages, including the neurogenic ectoderm (early mesoderm spreading), muscle precursors (dorsal muscles, visceral muscles, and heart), hindgut (visceral musculature), and neuroblasts (Stathopoulos et al., 2004).
+</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_2c88e85f-9abc-4f10-a957-3633566f8dbb">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:15075295"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/sturtevant/pyramusthisbe1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0033649.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_2416377b-ce96-4fc9-a170-a2dae3a1d576" qual:id="Shn" qual:constant="true" qual:name="Schnurri">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Shnurri (Shn) codes for a large protein containing eight zinc fingers (Arora et al.,1995).
+Shn is required to repress brk transcription upon Dpp signaling (Muller et al.,2003).
+This repression is mediated by a Shn/Mad/Med complex that antagonises transcriptional activation (Yao et al.,  2008). 
+</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_2416377b-ce96-4fc9-a170-a2dae3a1d576">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:7774017"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:12705870"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:18506030"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0003396.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/sites/fly/gene/schnurri.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/Q0E9C5"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/A1Z8F4"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/A0A0B4KFC0"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="c6cf5f89-21e1-489b-89ea-de4d900330f2" qual:id="Spi" qual:constant="true" qual:name="Spitz">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Spitz (Spi) is a transforming growth factor responsible for DER activation in most tissues. Spitz is produced as an inactive membrane precursor and is ubiquitously expressed. 
+Even when expressed at high levels, the precursor form is inactive. 
+Once reaching the Golgi, Spitz encounters Rhomboid, a seven-transmembrane domain protein that is essential for Spitz cleavage and activation (Shiloh et al., 2003).
+</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#c6cf5f89-21e1-489b-89ea-de4d900330f2">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:12648473"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0005672.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/torstoll/spitz.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/Q01083"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="adc667f5-4bb5-4a7a-9558-94a18967e1bb" qual:id="SuH" qual:constant="true" qual:name="Suppressor of  hairless">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Suppressor of Hairless (Su(H)) modulates Twist levels, leading to the low and high Twist characteristic pattern of wild-type embryos at stage 10. 
+Pan-mesodermal expression of a constitutively transactivating Su(H) form Su(H)-VP16 leads to expanded high Twist domains. 
+Notch requires Su(H) to repress Twist. In Notch mutant embryos, Twist phenotype results from the loss of a transcriptional switch that converts Su(H) from a constitutive repressor into an activator (Tapanes-Castillo et al., 2004).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#adc667f5-4bb5-4a7a-9558-94a18967e1bb">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:15128668"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0004837.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P28159"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/neural/suphair.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_289e3f7c-e811-4009-80f4-e5c66247a99e" qual:id="Ths" qual:constant="true" qual:name="Thisbe">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Thisbe (Ths) and Pyramus (Pyr), encode FGF signaling molecules that appear to function in a partially redundant fashion to activate Htl. 
+They are required for the development of different mesoderm lineages, including the neurogenic ectoderm (early mesoderm spreading), muscle precursors (dorsal muscles, visceral muscles, and heart), hindgut (visceral musculature), and neuroblasts (Stathopoulos et al., 2004).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_289e3f7c-e811-4009-80f4-e5c66247a99e">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:15075295"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/sturtevant/pyramusthisbe1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0033652.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_49362eea-fdf8-48c3-9ff4-9c59af81c5a0" qual:id="Upd" qual:constant="true" qual:name="Unpaired">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Unpaired (UPD) is a secreted glycoprotein released by heparin (Harrison et al, 1998). 
+Drosophila JAK/STAT pathway activity is mediated exclusively by the ligands UPD, UPD2 and UPD3 (Harrison et al, 1998).
+Upd and Upd2 have overlapping segmental expression patterns during mesoderm development (Hombria et al, 2005).
+</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_49362eea-fdf8-48c3-9ff4-9c59af81c5a0">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:9784499"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:16277982"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0004956.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0030904.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0053542.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/sites/fly/dbzhnsky/outstrh1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/Q9VWW4"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_797d2374-da67-4c8f-8d8b-3cdf0cd55f20" qual:id="Wg" qual:constant="true" qual:name="External Wg">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Wingless (Wg) input is provided as an initial self-sustained conditions, which represent the presence of external Wg signal. 
+Wg expression is limited to the anterior embryonic segment domains. 
+Wg is required for the development of H and SM (Azpiazu et al., 1996 ; Frasch et al., 1999).
+ 
+</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_797d2374-da67-4c8f-8d8b-3cdf0cd55f20">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:8985186"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:10355030"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/segment/wingles1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0004009.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P09615"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="3" qual:compartment="comp1" metaid="a39f68a9-a73c-4bdf-890d-2fe0aafb9782" qual:id="Bap" qual:constant="false" qual:name="Bagpipe">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>The main area for Bagpipe (Bap) expresion is the dorsal mesoderm. 
+Bap is required for VM specification, as no VM is formed in bap loss-of-function mutants (Azpiazu et al., 1993). 
+Wg represses Bap in the H domain via Slp. 
+Slp and Bap are expressed in mutually exclusive domains in the dorsal mesoderm ( Azpiazu et al.,1996 and Reichmann et al.,1997). </p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#a39f68a9-a73c-4bdf-890d-2fe0aafb9782">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:8985186"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:9247334"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/gene/tinman.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0004862.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P22809"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="2" qual:compartment="comp1" metaid="b6a442a0-326d-4d85-b4d9-df5b811bf3c7" qual:id="Bin" qual:constant="false" qual:name="Biniou">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Biniou (Bin) is expressed in progenitors of all three types of visceral musculature (from stage 10 to late 11;  Zaffran et al., 2001). 
+Bin requires the combined activities of bap and dpp for its normal activation. 
+Bin is required for VM specification.</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#b6a442a0-326d-4d85-b4d9-df5b811bf3c7">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:11691840"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0045759.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/gene/biniou1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/Q9VS05"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="b29d96d1-8cde-4560-91e7-426d89814f6f" qual:id="Brk" qual:constant="false" qual:name="Brinker">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Brinker (Brk) plays an essential role in the regulation of most Dpp targets. 
+Brk binds to the enhancers of Dpp target genes and functions as a constitutive repressor (Yao et al., 2008).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#b29d96d1-8cde-4560-91e7-426d89814f6f">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:18506030"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/torstoll/brinkr1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0024250.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/Q9XTN4"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_4e2151ba-7a89-43a5-a4d0-c0e651a3eefb" qual:id="Ci" qual:constant="false" qual:name="Ci">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Cubitus interruptus (Ci) is the downstream transcription factor of Hh signalling (Hosono et al., 2003). 
+Ci exists in an activatory and an inhbitory forms. 
+Th node Ci here represents the activatory form.
+Hh signalling prmotes promotes the development of VM and FB via Ci (Azpiazu et al., 1996 ; Reichmann et al.,1998).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_4e2151ba-7a89-43a5-a4d0-c0e651a3eefb">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID::8985186"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:9435291"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/segment/cubitus.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0004859.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P52172"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="c8ac6ca7-a808-4aad-b853-fad9fb237311" qual:id="Da" qual:constant="false" qual:name="Daughterless">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Daughterless (Da) is ubiquitously expressed throughout development and required to maintain uniform high Twist expression throughout the mesoderm during gastrulation (Cronmiller et al.,1993). 
+Loss of Da in early embryos reduces Twist expression, indicating that Da is required for high levels of Twist (Castanon et al., 2001).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#c8ac6ca7-a808-4aad-b853-fad9fb237311">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:11688563"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:8217842"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/gene/dauterls.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0000413.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P11420"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_5b9aa65b-30f7-4572-8f12-f3788124d271" qual:id="Dsix4" qual:constant="false" qual:name="Drosophila six4">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Drosophila Six 4 (Dsix4) is a key factor for the development of H and SM (Yvan et al., 2006).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_5b9aa65b-30f7-4572-8f12-f3788124d271">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:16595131"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0027364.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/genebrief/six4.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="d72ec6c7-30d6-4407-8cc7-c3c95b0078a9" qual:id="Dome" qual:constant="false" qual:name="Domeless">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Domeless (Dome) is the receptor of the JAK/STAT pathway (Brown and Hombria, 2001).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#d72ec6c7-30d6-4407-8cc7-c3c95b0078a9">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:11696329"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0043903.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/sites/fly/dbzhnsky/domeles1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_2772a64e-18f9-4e51-8cde-6fbd3049f7bd" qual:id="Der" qual:constant="false" qual:name="Der or Torpedo">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Deranged (Der), is the Drosophila epidermal growth factor (EGF) receptor. 
+The presence of four activating ligands (Spitz, Keren, Gurken and Vein) and one inhibitory ligand allows versatile combinations of DER activation (Shiloh et al.,1991 and 2003).
+</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_2772a64e-18f9-4e51-8cde-6fbd3049f7bd">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:1820687"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:12648473"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0003731.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/torstoll/egf-r1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_77728e1e-127d-4e7d-8f40-eb7d8a8ecf21" qual:id="Doc" qual:constant="false" qual:name="DorsoC">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>T-box factors Dorsocross (Doc 1, 2 and 3) are co-expressed in the dorsal mesoderm (Reim et al., 2003 and Tao et al., 2007). 
+In the model, they are encoded in a single node (Doc). 
+Doc is expressed in H at stages 10-11 at the intersection of Dpp and Wg signalling instructions. 
+In doc mutant embryo, Pnr expression is abolished (Tao et al., 2007).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_77728e1e-127d-4e7d-8f40-eb7d8a8ecf21">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:12783790"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:17208472"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0028789.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0035956.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0035954.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/sturtevant/droscro1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/D6X1T1"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="c93ef7a5-e501-4eb9-99eb-e27bdd199d27" qual:id="Emc" qual:constant="false" qual:name="extra macrochaetae">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>In the embryonic mesoderm, Emc is expressed uniformly during gastrulation until stage 10 (Ellis et al.,1990 and Garell et al.,1990). 
+Emc has been shown to genetically and biochemically interact with Da, inhibiting its activity (Tapanas-Castillo et al., 2004).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#c93ef7a5-e501-4eb9-99eb-e27bdd199d27">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:1690604"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:1690605"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:15128668"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/gene/emc.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0000575.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P18491"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_477f95d1-996e-4432-9ad3-89f996e58100" qual:id="E_S" qual:constant="false" qual:name="Enhancer of Split">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Su(H)-mediated Notch signaling represses Twist expression during subdivision and thus plays a critical role in patterning mesodermal segments. 
+Notch acts as a transcriptional switch on mesodermal target genes. 
+Notch signaling targets two distinct 'Repressors of twist' - the proteins encoded by the Enhancer of split complex [E(spl)C] and the HLH gene extra machrochaetae (emc)
+(Tapanes-Castillo and Baylies, 2004). </p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_477f95d1-996e-4432-9ad3-89f996e58100">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/sites/fly/neural/enhsplit.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.ncbi.nlm.nih.gov.gate1.inist.fr/pubmed/15128668"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="ca6f9c12-2765-46ec-87cd-6d98c13b3fa8" qual:id="Eve" qual:constant="false" qual:name="Even-skipped">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Even-skipped (Eve) is a transcriptional repressor. 
+Eve expression depends on dpp, wg, tin, and slp.
+During the onset of its expression, it is coexpressed with Tin and Slp in mesodermal cells (Knirr et al., 2001; Liu et al., 2008). 
+Tin and Dpp-activated Smads appear to synergize in allowing eve induction (Knirr et al., 2001). 
+In eve loss-of-function mutants, the mesoderm is unsegmented in the trunk region (Azpiazu et al.,1996). 
+No Eve positive H cells can be detected in Tin loss-of-function (Bordmer et al., 1993).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#ca6f9c12-2765-46ec-87cd-6d98c13b3fa8">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:11783990"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:18067885"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:8985186"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:7915669"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/segment/evenskp1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0000606.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P06602"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="b5c1ab5c-d24f-4e97-a49d-9bc82da97c62" qual:id="Eya" qual:constant="false" qual:name="Eya">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Eyes absent (Eya) is required for muscle development (Liu et al., 2009; Busser at al., 2012)</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#b5c1ab5c-d24f-4e97-a49d-9bc82da97c62">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:19217429"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:22412381"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/Q05201"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0000320.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/newgene/eyesab1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_72eb895a-38da-4a4a-b215-f814d89a0192" qual:id="Hbr" qual:constant="false" qual:name="Stumps, dof or Heartbroken">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Hbr or Stumps acts downstream of FGF receptor, but upstream or in parallel to Ras1. 
+Hbr is involved in both Heartless and Breathless signalling (Michelson et al., 1998). </p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_72eb895a-38da-4a4a-b215-f814d89a0192">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:9778498"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0020299.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/sites/fly/dbzhnsky/heartbk1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/Q9VFH9"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/A0A0B4KGP0"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/A0A0B4KFZ6"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/Q9VFI0"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="e17e9e34-d202-4d30-8f7e-523a761cd30c" qual:id="Htl" qual:constant="false" qual:name="Heartless">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Heartless (Htl) is Drosophila FGF pathway receptor. 
+Expressed throughout the mesoderm of early embryos, Htl is required for proper mesoderm spreading (Shishido et al., 1997; Stathopoulos et al., 2004 and Wilson et al., 2005). 
+In Htl mutant, there is no spreading of the mesoderm.</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#e17e9e34-d202-4d30-8f7e-523a761cd30c">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:9187139"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:15634694"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:15075295"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0010389.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/newgene/fgfr1-1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/Q07407"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="dd991a30-5131-4717-838f-bb762295cb4c" qual:id="Hop" qual:constant="false" qual:name="JAK (Hopscotch)">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Upon ligand binding, Dome activates a receptor-associated JAK (Hopscotch), which in turn phosphorylates pre-associated Stat (Stat92E) dimers (Novak et al., 1998; Stancato et al., 1996).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#dd991a30-5131-4717-838f-bb762295cb4c">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:9647732"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:8626752"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0004864.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/sites/fly/gene/hopscotc.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/B4Q623"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="c197fa02-e17b-42b4-a8d5-7cc3643cf5d3" qual:id="Mad" qual:constant="false" qual:name="Mad or Smad">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Mothers against dpp (Mad) and Medea (Med) transduce Dpp signal during Mesoderm specification (from stage 8 to 10 or 11). 
+Dpp signaling is initiated by binding of the ligand to a complex of the type I and type II serine/threonine kinase receptors,including Thickveins (Tkv). 
+Activated Tkv phosphorylates the BMP specific Mad, leading to its association with the co-Smad Med and accumulation of the Mad/Med complex in the nucleus. 
+Mad and Med-binding sites have been found in the promoters of many Dpp responsive genes (Xu et al., 1998 and Yao et al., 2008).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#c197fa02-e17b-42b4-a8d5-7cc3643cf5d3">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:9694800"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:18506030"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0011648.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/newgene/mothadpp.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P42003"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_90e4dc33-e0bd-4db7-828c-2cd12b0ee037" qual:id="Mef2" qual:constant="false" qual:name="Mef2">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Myocyte enhancer factor 2 (Mef2) is required for specification and differentiation of skeletal, cardiac, and visceral muscles (Gajewski et al., 1997; Cripps et al., 1998). </p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_90e4dc33-e0bd-4db7-828c-2cd12b0ee037">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:9034334"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:9450935"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/gene/mef2.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0011656.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P40791"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" qual:constant="false" qual:name="Notch" qual:id="Nicd">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>A proteolytic processing mediates the release of the Notch intracellular domain Nicd, which then enters the nucleus and interacts with the CSL (CBF1, Su(H) and LAG-1) complex.
+For references and links, see the Notch node.
+</p>
+  </body>
+        </notes>
+      </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="d50f6bd0-b026-4f2f-970a-28cbab6a95f6" qual:id="Notch" qual:constant="false" qual:name="Notch">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Notch is ubiquitously express during gastrulation and mesoderm subdivision. 
+It is activated by Delta (Dl) and Serrate ligands. 
+Loss- and gain-of function experiments revealed that Notch is required to repress Twist expression at stage 10 (Tapanes-Castillo and Baylies, 2004).
+</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#d50f6bd0-b026-4f2f-970a-28cbab6a95f6">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:15128668"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/neural/notch1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0004647.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P07207"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_26c6d1e0-d6bd-417d-9333-bb0183a410a9" qual:id="Pan" qual:constant="false" qual:name="Pangolin">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Pangolin (Pan) is the Wg signalling effector. 
+Wg is required for the development of H and muscle during mesoderm development (Wu et al., 1995; Baylies et al., 1995; Frasch et al., 1999).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_26c6d1e0-d6bd-417d-9333-bb0183a410a9">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:7781903"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:8582292"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/segment/pangoln1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0085432.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P91943"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/Q8IMA8"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_5f5908fb-5dd7-4464-872e-ceb45338417d" qual:id="Pka" qual:constant="false" qual:name="Protein kinase A">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Protein kinase A (Pka) acts at two levels in Hh pathway.
+First, it phosphorylates Smoothened (Smo) cytoplasmic to alleviate Smo-mediated recruitment of the cytoplasmic regulatory complex (Cos2, Fu, and Ci).
+Second, its phosphorylates Ci and thereby targets it for proteolytic processing into a transcriptional repressor (Aikin et al., 2008).
+</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_5f5908fb-5dd7-4464-872e-ceb45338417d">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:18379584"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0000273.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/newgene/pka-c1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P91682"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P12370"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_26b86539-4dda-4cb5-96ed-dab81ec41c88" qual:id="Pnr" qual:constant="false" qual:name="Pannier">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Pannier (Pnr) is a GATA class transcription factor expressed in both the dorsal ectoderm and dorsal mesoderm.
+Pnr is required for cardiac cell specification. 
+Its expression in the dorsal mesoderm is controled by Dpp and Tin (Reim et al., 2005 ; Tao et al., 2007).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_26b86539-4dda-4cb5-96ed-dab81ec41c88">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:16221729"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:17208472"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0003117.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/gene/pannier.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P52168"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="2" qual:compartment="comp1" metaid="_1b627d58-a2d4-4dfd-98ca-e773643a54d8" qual:id="Pnt" qual:constant="false" qual:name="Pointed">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Phosphorylated Pointed P2 (PntP2 or Pnt in the model) is the effector (activator) of Epidermal Growth Factor signalling pathway (Alvarez et al., 2003 ; Shiloh et al., 2005).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_1b627d58-a2d4-4dfd-98ca-e773643a54d8">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:12756183"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:16123311"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0003118.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/neural/pointed.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P51022"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P51023"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_59e93271-c63c-42de-b188-21c27361f94a" qual:id="Poxm" qual:constant="false" qual:name="Pox meso">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>The Pax gene Pox meso (Poxm) was the first and so far only gene whose initial expression was shown to occur specifically in the anlage of the somatic mesoderm.
+The development of larval body wall muscles involve two distinct Pox meso functions  (Duan et al., 2007). 
+One is the specification within the high Twi or Slp domain, of a subdomain of competence for lateral and ventral muscle development. 
+The second function is the involvement of poxm in muscle differentiation.
+</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_59e93271-c63c-42de-b188-21c27361f94a">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:17942482"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0003129.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/genebrief/poxmeso.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_792501c6-c54b-422b-b79b-c6a8910c9ce4" qual:id="Ptc" qual:constant="false" qual:name="Patched">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>In the embryo, the distribution of Hh is regulated by the receptor Patched (Ptc). 
+In the absence of Hh binding, Ptc suppresses the function of Smoothened (Smo) (Taipale et al., 2002). </p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_792501c6-c54b-422b-b79b-c6a8910c9ce4">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:12192414"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/segment/patched1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0003892.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P18502"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="2" qual:compartment="comp1" metaid="b78fd9f9-41cf-4c2a-905b-2a912c659bbe" qual:id="Ras" qual:constant="false" qual:name="raspberry">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Ras functions downstream of the EGF-receptor to promote activation of Raf (pole holein Drosophila), MEK (Dsor 1 in Drosophila) and eventually activation of the ERK MAP kinase  Rolled (McKay et al., 2007). 
+Ras is required for H formation (Liu et al., 2006). </p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#b78fd9f9-41cf-4c2a-905b-2a912c659bbe">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:17496910"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:14515177"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0003204.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/torstoll/ras85-1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/Q07152"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="2" qual:compartment="comp1" metaid="_72f5ee0d-b361-46cf-887c-c4fd5c709fad" qual:id="Rl" qual:constant="false" qual:name="Rolled">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Rolled/MAP kinase (Rl)  is essential to the proper functioning of the Ras signalling pathway. After phosphorylation by Dsor1 and translocation in the nucleus, Rl phosphorylates Pointed P2 (Pnt in the model). 
+EGF target genes expression are then activated by Pnt (Roignant et al., 2006).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_72f5ee0d-b361-46cf-887c-c4fd5c709fad">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:16600911"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0003256.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/torstoll/mapkin1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/A8Y4W5"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="b83bbb6a-6607-419e-aa8d-3c961dc58755" qual:id="Slp" qual:constant="false" qual:name="Sloppy paired">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Sloppy paired (Slp) is a direct target of the Wg signalling cascade and acts within the mesoderm to regulate the development of visceral mesoderm, somatic muscle and heart progenitors ( Lee et al., 2000).
+Wg and Slp are required to abrogate bap expression in H region ( Azpiazu et al 1996; Riechmann et al 1997).
+</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#b83bbb6a-6607-419e-aa8d-3c961dc58755">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:11076769"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:8985186"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:9247334"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/segment/slopyprd.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0003430.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0004567.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P32031"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P32030"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_6c42a5c4-70e2-41dd-bc32-c4c77a6342b8" qual:id="Smo" qual:constant="false" qual:name="Smoothened">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Smoothened (Smo) is a Hedgehog (Hh) signalling molecule that binds Ptc. 
+n the absence of Hh, Smo activity is inhibited. 
+Upon inactivation of Ptc by Hh binding, Smo recruits a large cytoplasmic complex required for Ci_act formation (Taipale et al., 2002 ; Ayers et al., 2010).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_6c42a5c4-70e2-41dd-bc32-c4c77a6342b8">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:12192414"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:20207148"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0003444.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/newgene/smoothen.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P91682"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="2" qual:compartment="comp1" metaid="f07cb666-94c7-48ef-833b-e417a0a1438d" qual:id="Srp" qual:constant="false" qual:name="Serpent">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Serpent (Srp) is required for FB formation (Riechmann et al., 1998; Azpiazu et al., 1996).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#f07cb666-94c7-48ef-833b-e417a0a1438d">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:8985186"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:9435291"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/gene/serpent.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0003507.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P52172"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="e0a26895-a623-4390-b6b4-f147c2133dc7" qual:id="Stat92E" qual:constant="false" qual:name="Stat92E">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Signal-transducer and activator of transcription protein at 92E (Stat92E) is the transcriptional effector of the JAK/STAT pathway. 
+Phosphorylated Stat92E homodimers translocate to the nucleus to regulate the expression of specific target genes. 
+Stat92E encodes a 761 amino acid Stat and is the only known Stat protein encoded protein in Drosophila (Hou et al, 1996; Yan et al, 1996).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#e0a26895-a623-4390-b6b4-f147c2133dc7">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:9066269"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:8608596"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0016917.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/sites/fly/gene/marelle.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/Q24151"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="2" qual:compartment="comp1" metaid="d875e0d5-c2a9-400e-9d05-e2b7e63eb9cd" qual:id="Tin" qual:constant="false" qual:name="Tinman">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Tinman (Tin) is expressed at stage 8 in the whole mesoderm before being restricted to dorsal mesoderm (H+VM) at stage 10 (Bodmer, 1993 and Frasch et al.,1995). 
+Tin is required for H and VM development (Bordmer, 1993 and Azpiazu et al.,1993). 
+Tin needs Twist for his initial activation (Bodmer et al., 1993).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#d875e0d5-c2a9-400e-9d05-e2b7e63eb9cd">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:7915669"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:7700357"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:8101173"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0004110.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P22711"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/gene/tinman.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_17343b76-1107-410a-b9b5-2f7493a1da4f" qual:id="Tkv" qual:constant="false" qual:name="Thick-veins">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Dpp signalling is initiated by binding of the ligand to a complex involving the serine/threonine kinase receptor Thickveins (Tkv)  (Wartlick et al., 2011).
+</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_17343b76-1107-410a-b9b5-2f7493a1da4f">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:21385708"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0003716.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/gene/thickvan.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/Q27933"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="2" qual:compartment="comp1" metaid="_360737b6-81f3-4b3e-95d6-9bcc2569bd82" qual:id="Twi" qual:constant="false" qual:name="Twist">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Twist (Twi) is required for the formation of most body wall muscle and H precursor. 
+Twi mutant embryo develop no mesoderm (Furlong et al., 2001). 
+Wg and Slp are required to generate segmentally elevated levels of Twi expression (Bodmer et al., 1993; Baylies et al.,1996). </p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_360737b6-81f3-4b3e-95d6-9bcc2569bd82">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:11486054"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:7915669"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:9635422"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/torstoll/twist1.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0003900.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P10627"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+      <qual:qualitativeSpecies qual:maxLevel="1" qual:compartment="comp1" metaid="_393f69b0-7077-45f1-a79f-61c0786bf1e0" qual:id="Zfh1" qual:constant="false" qual:name="Zn finger homeodomain 1">
+        <notes>
+          <body xmlns="http://www.w3.org/1999/xhtml">
+     <p>Zn finger homeodomain 1 (Zfh1) is required for the specification and differentiation of mesodermal tissue, including the heart and muscle (Laic et al., 1991 and 1993).</p>
+  </body>
+        </notes>
+        <annotation>
+	<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:bqbiol="http://biomodels.net/biology-qualifiers/">
+	<rdf:Description rdf:about="#_393f69b0-7077-45f1-a79f-61c0786bf1e0">
+              <bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:1680377"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="PMID:8097886"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://flybase.org/reports/FBgn0004606.html"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.sdbonline.org/fly/gene/zincfh11.htm"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	
+	<bqbiol:unknownQualifier>
+	<rdf:Bag>
+	<rdf:li rdf:resource="http://www.uniprot.org/uniprot/P28166"/>
+	</rdf:Bag>
+	</bqbiol:unknownQualifier>
+	</rdf:Description>
+	</rdf:RDF>
+	</annotation>
+            </qual:qualitativeSpecies>
+    </qual:listOfQualitativeSpecies>
+    <qual:listOfTransitions xmlns:qual="http://www.sbml.org/sbml/level3/version1/qual/version1">
+      <qual:transition qual:id="tr_Bap">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="En" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Bap_in_2"/>
+          <qual:input qual:qualitativeSpecies="Med" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Bap_in_4"/>
+          <qual:input qual:qualitativeSpecies="Bin" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Bap_in_13"/>
+          <qual:input qual:qualitativeSpecies="Ci" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Bap_in_15"/>
+          <qual:input qual:qualitativeSpecies="Mad" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Bap_in_28"/>
+          <qual:input qual:qualitativeSpecies="Slp" qual:transitionEffect="none" qual:sign="negative" qual:id="tr_Bap_in_40"/>
+          <qual:input qual:qualitativeSpecies="Tin" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Bap_in_44"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Bap" qual:transitionEffect="assignmentLevel" qual:id="tr_Bap_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <or/>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+          <qual:functionTerm qual:resultLevel="2">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <or/>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+          <qual:functionTerm qual:resultLevel="3">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <or/>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Bin </ci>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                </apply>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Bin">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Bap" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Bin_in_12"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Bin" qual:transitionEffect="assignmentLevel" qual:id="tr_Bin_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <geq/>
+                <ci> Bap </ci>
+                <cn type="integer"> 2 </cn>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Brk">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Med" qual:transitionEffect="none" qual:sign="negative" qual:id="tr_Brk_in_4"/>
+          <qual:input qual:qualitativeSpecies="Shn" qual:transitionEffect="none" qual:sign="negative" qual:id="tr_Brk_in_6"/>
+          <qual:input qual:qualitativeSpecies="Mad" qual:transitionEffect="none" qual:sign="negative" qual:id="tr_Brk_in_28"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Brk" qual:transitionEffect="assignmentLevel" qual:id="tr_Brk_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <or/>
+                <apply>
+                  <eq/>
+                  <ci> Med </ci>
+                  <cn type="integer"> 0 </cn>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Shn </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Shn </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                </apply>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Ci">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Pka" qual:transitionEffect="none" qual:sign="negative" qual:id="tr_Ci_in_33"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Ci" qual:transitionEffect="assignmentLevel" qual:id="tr_Ci_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <eq/>
+                <ci> Pka </ci>
+                <cn type="integer"> 0 </cn>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Da">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Emc" qual:transitionEffect="none" qual:sign="negative" qual:id="tr_Da_in_21"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Da" qual:transitionEffect="assignmentLevel" qual:id="tr_Da_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <eq/>
+                <ci> Emc </ci>
+                <cn type="integer"> 0 </cn>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Dsix4">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Med" qual:transitionEffect="none" qual:sign="negative" qual:id="tr_Dsix4_in_4"/>
+          <qual:input qual:qualitativeSpecies="Mad" qual:transitionEffect="none" qual:sign="negative" qual:id="tr_Dsix4_in_28"/>
+          <qual:input qual:qualitativeSpecies="Tin" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Dsix4_in_44"/>
+          <qual:input qual:qualitativeSpecies="Zfh1" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Dsix4_in_47"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Dsix4" qual:transitionEffect="assignmentLevel" qual:id="tr_Dsix4_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <or/>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Zfh1 </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Zfh1 </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Dome">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Upd" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Dome_in_10"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Dome" qual:transitionEffect="assignmentLevel" qual:id="tr_Dome_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <eq/>
+                <ci> Upd </ci>
+                <cn type="integer"> 1 </cn>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Der">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Spi" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Der_in_7"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Der" qual:transitionEffect="assignmentLevel" qual:id="tr_Der_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <eq/>
+                <ci> Spi </ci>
+                <cn type="integer"> 1 </cn>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Doc">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Med" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Doc_in_4"/>
+          <qual:input qual:qualitativeSpecies="Mad" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Doc_in_28"/>
+          <qual:input qual:qualitativeSpecies="Pan" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Doc_in_32"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Doc" qual:transitionEffect="assignmentLevel" qual:id="tr_Doc_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <and/>
+                <apply>
+                  <eq/>
+                  <ci> Med </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+                <apply>
+                  <eq/>
+                  <ci> Mad </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+                <apply>
+                  <eq/>
+                  <ci> Pan </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Emc">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Nicd" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Emc_in_30"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Emc" qual:transitionEffect="assignmentLevel" qual:id="tr_Emc_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <eq/>
+                <ci> Nicd </ci>
+                <cn type="integer"> 1 </cn>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_E_S">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="SuH" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_E_S_in_8"/>
+          <qual:input qual:qualitativeSpecies="Nicd" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_E_S_in_30"/>
+          <qual:input qual:qualitativeSpecies="Stat92E" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_E_S_in_43"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="E_S" qual:transitionEffect="assignmentLevel" qual:id="tr_E_S_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <and/>
+                <apply>
+                  <eq/>
+                  <ci> SuH </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+                <apply>
+                  <eq/>
+                  <ci> Nicd </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+                <apply>
+                  <eq/>
+                  <ci> Stat92E </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Eve">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Med" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Eve_in_4"/>
+          <qual:input qual:qualitativeSpecies="Htl" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Eve_in_26"/>
+          <qual:input qual:qualitativeSpecies="Mad" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Eve_in_28"/>
+          <qual:input qual:qualitativeSpecies="Pan" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Eve_in_32"/>
+          <qual:input qual:qualitativeSpecies="Pnt" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Eve_in_35"/>
+          <qual:input qual:qualitativeSpecies="Tin" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Eve_in_44"/>
+          <qual:input qual:qualitativeSpecies="Twi" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Eve_in_46"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Eve" qual:transitionEffect="assignmentLevel" qual:id="tr_Eve_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <and/>
+                <apply>
+                  <eq/>
+                  <ci> Med </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+                <apply>
+                  <eq/>
+                  <ci> Htl </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+                <apply>
+                  <eq/>
+                  <ci> Mad </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+                <apply>
+                  <eq/>
+                  <ci> Pan </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+                <apply>
+                  <geq/>
+                  <ci> Pnt </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+                <apply>
+                  <eq/>
+                  <ci> Tin </ci>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+                <apply>
+                  <geq/>
+                  <ci> Twi </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Eya">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Tin" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Eya_in_44"/>
+          <qual:input qual:qualitativeSpecies="Twi" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Eya_in_46"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Eya" qual:transitionEffect="assignmentLevel" qual:id="tr_Eya_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <or/>
+                <apply>
+                  <and/>
+                  <apply>
+                    <leq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Twi </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <eq/>
+                  <ci> Tin </ci>
+                  <cn type="integer"> 2 </cn>
+                </apply>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Hbr">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Htl" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Hbr_in_26"/>
+          <qual:input qual:qualitativeSpecies="Pan" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Hbr_in_32"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Hbr" qual:transitionEffect="assignmentLevel" qual:id="tr_Hbr_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <and/>
+                <apply>
+                  <eq/>
+                  <ci> Htl </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+                <apply>
+                  <eq/>
+                  <ci> Pan </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Htl">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Pyr" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Htl_in_5"/>
+          <qual:input qual:qualitativeSpecies="Ths" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Htl_in_9"/>
+          <qual:input qual:qualitativeSpecies="Pan" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Htl_in_32"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Htl" qual:transitionEffect="assignmentLevel" qual:id="tr_Htl_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <or/>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> Pyr </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ths </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Pan </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> Pyr </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ths </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Pan </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> Pyr </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ths </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Hop">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Dome" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Hop_in_18"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Hop" qual:transitionEffect="assignmentLevel" qual:id="tr_Hop_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <eq/>
+                <ci> Dome </ci>
+                <cn type="integer"> 1 </cn>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Mad">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Tkv" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Mad_in_45"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Mad" qual:transitionEffect="assignmentLevel" qual:id="tr_Mad_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <eq/>
+                <ci> Tkv </ci>
+                <cn type="integer"> 1 </cn>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Mef2">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Tin" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Mef2_in_44"/>
+          <qual:input qual:qualitativeSpecies="Twi" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Mef2_in_46"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Mef2" qual:transitionEffect="assignmentLevel" qual:id="tr_Mef2_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <or/>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Twi </ci>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <geq/>
+                  <ci> Tin </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Nicd">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Notch" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Nicd_in_31"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Nicd" qual:transitionEffect="assignmentLevel" qual:id="tr_Nicd_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <eq/>
+                <ci> Notch </ci>
+                <cn type="integer"> 1 </cn>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Notch">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Delta" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Notch_in_0"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Notch" qual:transitionEffect="assignmentLevel" qual:id="tr_Notch_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <eq/>
+                <ci> Delta </ci>
+                <cn type="integer"> 1 </cn>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Pan">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Wg" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Pan_in_11"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Pan" qual:transitionEffect="assignmentLevel" qual:id="tr_Pan_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <eq/>
+                <ci> Wg </ci>
+                <cn type="integer"> 1 </cn>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Pka">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Smo" qual:transitionEffect="none" qual:sign="negative" qual:id="tr_Pka_in_41"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Pka" qual:transitionEffect="assignmentLevel" qual:id="tr_Pka_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <eq/>
+                <ci> Smo </ci>
+                <cn type="integer"> 0 </cn>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Pnr">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Doc" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Pnr_in_20"/>
+          <qual:input qual:qualitativeSpecies="Tin" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Pnr_in_44"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Pnr" qual:transitionEffect="assignmentLevel" qual:id="tr_Pnr_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <and/>
+                <apply>
+                  <eq/>
+                  <ci> Doc </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+                <apply>
+                  <geq/>
+                  <ci> Tin </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Pnt">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Rl" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Pnt_in_39"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Pnt" qual:transitionEffect="assignmentLevel" qual:id="tr_Pnt_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <geq/>
+                <ci> Rl </ci>
+                <cn type="integer"> 1 </cn>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Poxm">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Med" qual:transitionEffect="none" qual:sign="negative" qual:id="tr_Poxm_in_4"/>
+          <qual:input qual:qualitativeSpecies="Mad" qual:transitionEffect="none" qual:sign="negative" qual:id="tr_Poxm_in_28"/>
+          <qual:input qual:qualitativeSpecies="Pan" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Poxm_in_32"/>
+          <qual:input qual:qualitativeSpecies="Twi" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Poxm_in_46"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Poxm" qual:transitionEffect="assignmentLevel" qual:id="tr_Poxm_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <or/>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Pan </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Twi </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Pan </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Twi </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Ptc">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Hh" qual:transitionEffect="none" qual:sign="negative" qual:id="tr_Ptc_in_3"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Ptc" qual:transitionEffect="assignmentLevel" qual:id="tr_Ptc_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <eq/>
+                <ci> Hh </ci>
+                <cn type="integer"> 0 </cn>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Ras">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Der" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Ras_in_19"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Ras" qual:transitionEffect="assignmentLevel" qual:id="tr_Ras_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <eq/>
+                <ci> Der </ci>
+                <cn type="integer"> 1 </cn>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Rl">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Ras" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Rl_in_38"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Rl" qual:transitionEffect="assignmentLevel" qual:id="tr_Rl_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <geq/>
+                <ci> Ras </ci>
+                <cn type="integer"> 1 </cn>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Slp">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Pan" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Slp_in_32"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Slp" qual:transitionEffect="assignmentLevel" qual:id="tr_Slp_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <eq/>
+                <ci> Pan </ci>
+                <cn type="integer"> 1 </cn>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Smo">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Ptc" qual:transitionEffect="none" qual:sign="negative" qual:id="tr_Smo_in_37"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Smo" qual:transitionEffect="assignmentLevel" qual:id="tr_Smo_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <eq/>
+                <ci> Ptc </ci>
+                <cn type="integer"> 0 </cn>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Srp">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="En" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Srp_in_2"/>
+          <qual:input qual:qualitativeSpecies="Med" qual:transitionEffect="none" qual:sign="negative" qual:id="tr_Srp_in_4"/>
+          <qual:input qual:qualitativeSpecies="Ci" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Srp_in_15"/>
+          <qual:input qual:qualitativeSpecies="Mad" qual:transitionEffect="none" qual:sign="negative" qual:id="tr_Srp_in_28"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Srp" qual:transitionEffect="assignmentLevel" qual:id="tr_Srp_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <or/>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                </apply>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+          <qual:functionTerm qual:resultLevel="2">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <or/>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> En </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Ci </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                </apply>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Stat92E">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Hop" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Stat92E_in_27"/>
+          <qual:input qual:qualitativeSpecies="Tin" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Stat92E_in_44"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Stat92E" qual:transitionEffect="assignmentLevel" qual:id="tr_Stat92E_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <or/>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> Hop </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 2 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <eq/>
+                  <ci> Hop </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Tin">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Med" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Tin_in_4"/>
+          <qual:input qual:qualitativeSpecies="Mad" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Tin_in_28"/>
+          <qual:input qual:qualitativeSpecies="Pan" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Tin_in_32"/>
+          <qual:input qual:qualitativeSpecies="Stat92E" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Tin_in_43"/>
+          <qual:input qual:qualitativeSpecies="Tin" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Tin_in_44"/>
+          <qual:input qual:qualitativeSpecies="Twi" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Tin_in_46"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Tin" qual:transitionEffect="assignmentLevel" qual:id="tr_Tin_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <or/>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Twi </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Tin </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Pan </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> Med </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Mad </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Pan </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Stat92E </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                </apply>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+          <qual:functionTerm qual:resultLevel="2">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <and/>
+                <apply>
+                  <eq/>
+                  <ci> Med </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+                <apply>
+                  <eq/>
+                  <ci> Mad </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+                <apply>
+                  <eq/>
+                  <ci> Pan </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+                <apply>
+                  <eq/>
+                  <ci> Stat92E </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Tkv">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Dpp" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Tkv_in_1"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Tkv" qual:transitionEffect="assignmentLevel" qual:id="tr_Tkv_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <eq/>
+                <ci> Dpp </ci>
+                <cn type="integer"> 1 </cn>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Twi">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Da" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Twi_in_16"/>
+          <qual:input qual:qualitativeSpecies="E_S" qual:transitionEffect="none" qual:sign="negative" qual:id="tr_Twi_in_22"/>
+          <qual:input qual:qualitativeSpecies="Slp" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Twi_in_40"/>
+          <qual:input qual:qualitativeSpecies="Twi" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Twi_in_46"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Twi" qual:transitionEffect="assignmentLevel" qual:id="tr_Twi_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <or/>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> Da </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Twi </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> Da </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> E_S </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 0 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Twi </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+                <apply>
+                  <and/>
+                  <apply>
+                    <eq/>
+                    <ci> Da </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> E_S </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <eq/>
+                    <ci> Slp </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                  <apply>
+                    <geq/>
+                    <ci> Twi </ci>
+                    <cn type="integer"> 1 </cn>
+                  </apply>
+                </apply>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+          <qual:functionTerm qual:resultLevel="2">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <and/>
+                <apply>
+                  <eq/>
+                  <ci> Da </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+                <apply>
+                  <eq/>
+                  <ci> E_S </ci>
+                  <cn type="integer"> 0 </cn>
+                </apply>
+                <apply>
+                  <eq/>
+                  <ci> Slp </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+                <apply>
+                  <geq/>
+                  <ci> Twi </ci>
+                  <cn type="integer"> 1 </cn>
+                </apply>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+      <qual:transition qual:id="tr_Zfh1">
+        <qual:listOfInputs>
+          <qual:input qual:qualitativeSpecies="Twi" qual:transitionEffect="none" qual:sign="positive" qual:id="tr_Zfh1_in_46"/>
+        </qual:listOfInputs>
+        <qual:listOfOutputs>
+          <qual:output qual:qualitativeSpecies="Zfh1" qual:transitionEffect="assignmentLevel" qual:id="tr_Zfh1_out"/>
+        </qual:listOfOutputs>
+        <qual:listOfFunctionTerms>
+          <qual:defaultTerm qual:resultLevel="0">
+          </qual:defaultTerm>
+          <qual:functionTerm qual:resultLevel="1">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">            
+              <apply>
+                <geq/>
+                <ci> Twi </ci>
+                <cn type="integer"> 1 </cn>
+              </apply>
+            </math>
+                    </qual:functionTerm>
+        </qual:listOfFunctionTerms>
+      </qual:transition>
+    </qual:listOfTransitions>
+    <listOfCompartments>
+      <compartment constant="true" id="comp1"/>
+    </listOfCompartments>
+  </model>
+</sbml>
