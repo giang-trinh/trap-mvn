@@ -1,4 +1,4 @@
-# `trapmvn`: Trap space detection in multi-valued networks
+# Trap space detection in multi-valued networks with `trapmvn`
 
 Package `trapmvn` implements trap space detection in multi-valued 
 logical models through answer set programming. Currently, we support 
@@ -21,9 +21,10 @@ all trap space. The program accepts the following arguments:
  spaces, maximal trap spaces, or fixed-points.
  - `-s` [`--semantics`]: Use `unitary` or `general` to define the desired 
  model variable update scheme.
- - `-m` [`--max`]: Integer limit for the number of enumerated solutions.
+ - `-m` [`--max`]: Integer limit on the number of enumerated solutions.
  - `-fm` [`--fixmethod`]: Use either `deadlock` and `siphon` to switch between
- different fixed-point computation methods.
+ different fixed-point computation methods (only applies when combined 
+ with `-c fix`).
 
 The input model can be either given on standard input (in which case the presumed
 format is SBML), or as a file path in the last argument (in which case we infer
@@ -43,9 +44,11 @@ in our `case-study` folder. Here, we show how to load a model, convert it into a
 Petri net encoding and subsequently compute trap spaces using the `trapmvn` method.
 
 The case study itself is concerned with assessing the reliability of knockout 
-interventions in a large-scale model of Myc-deregulation in breast cancer.
+interventions in a large-scale model of Myc-deregulation in breast cancer. Specifically,
+we compare the trap spaces for all viable single- and dual- variable knockouts,
+and we hten compare these interventions on the basis of their "reliable" and "opportunistic"
+effects on the model phenotypes.
 
 ### Benchmarks
 
 TODO
- 

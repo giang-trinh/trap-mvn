@@ -1,6 +1,6 @@
 [project]
 name = "trapmvn"
-description = "Trap space computation of multi-valued networks."
+description = "Trap space computation for multi-valued networks."
 version = "0.1.0"
 authors = [
     { name = "Van Giang Trinh", email = "trinh.van-giang@lis-lab.fr" },
