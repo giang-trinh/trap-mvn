@@ -1,0 +1,4 @@
+# Ignore non-primary model sources.
+*.bnet
+*.an
+*.lp
