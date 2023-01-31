@@ -1,28 +1,55 @@
-`trap-mvn` is a Python package for computing various types of _trap spaces_ in multi-valued networks.
+# Trap space detection in multi-valued networks with `trapmvn`
 
-# Install
+Package `trapmvn` implements trap space detection in multi-valued 
+logical models through answer set programming. Currently, we support 
+[SBML-qual](https://sbml.org) (used e.g. by [GINsim](http://ginsim.org)) 
+and [BMA](http://biomodelanalyzer.org) model formats as inputs.
 
-You will need the `clingo` ASP solver in your PATH. Instructions are provided directly on the [Potassco pages](https://github.com/potassco/clingo/releases/).
+You can install `trapmvn` through `pip`:
 
-# Run `trap-mvn` from the command line
-
-``` sh
-$ python trapspace.py [-m maximum number of solutions] [-t maximum time to use in seconds] [-c type of trap spaces (min|max|fix)] [-s update semantics (general|unitary)] <SBML input file>
+```
+pip install git+https://github.com/giang-trinh/trap-mvn.git
 ```
 
-# Benchmark
+### Command line usage
 
-All `.sbml` models used in our benchmark are given in the `sbml` folder.
+You can use `trapmvn` from command line as a standalone program. The
+output should be a valid `.tsv` file (tab-separated-values) representing
+all trap space. The program accepts the following arguments:
 
-You can re-run the benchmark via the Jupyter notebook `test.ipynb`.
+ - `-c` [`--computation`]: Use `min`, `max` or `fix` to compute minimal trap
+ spaces, maximal trap spaces, or fixed-points.
+ - `-s` [`--semantics`]: Use `unitary` or `general` to define the desired 
+ model variable update scheme.
+ - `-m` [`--max`]: Integer limit on the number of enumerated solutions.
+ - `-fm` [`--fixmethod`]: Use either `deadlock` and `siphon` to switch between
+ different fixed-point computation methods (only applies when combined 
+ with `-c fix`).
 
-The `AN-ASP` method includes two source files: `AN2asp.py` and `fixed-points.lp`.
+The input model can be either given on standard input (in which case the presumed
+format is SBML), or as a file path in the last argument (in which case we infer
+the format from the file extension).
 
-The source code of Trappist is given in the `trappist` folder.
+Example usage:
 
-For the `mpbn` method, we need to install it using pip `pip install mpbn`.
+```
+python3 -m trapmvn --computation max --semantics general --max 10 ./path/to/model.bma
+python3 -m trapmvn -c min -s unitary -m 100 ./path/to/model.sbml
+```
 
-We use `bioLQM.jar` to obtain the Booleanization of a multi-valued network following the Van Ham Boolean mapping.
+### Python API and case study
 
+If you want to use `trapmvn` directly from Python, you can inspect Jupyter notebooks
+in our `case-study` folder. Here, we show how to load a model, convert it into a
+Petri net encoding and subsequently compute trap spaces using the `trapmvn` method.
 
+The case study itself is concerned with assessing the reliability of knockout 
+interventions in a large-scale model of Myc-deregulation in breast cancer. Specifically,
+we compare the trap spaces for all viable single- and dual- variable knockouts,
+and we hten compare these interventions on the basis of their "reliable" and "opportunistic"
+effects on the model phenotypes.
 
+### Benchmarks
+
+In the `benchmarks` folder, you can find several Jupyter notebooks with performance 
+comparison between `trapmvn` and other similar tools, like `trappist`, `mpbn` and `an-asp`.

@@ -1,0 +1,16 @@
+[project]
+name = "trapmvn"
+description = "Trap space computation for multi-valued networks."
+version = "0.1.0"
+authors = [
+    { name = "Van Giang Trinh", email = "trinh.van-giang@lis-lab.fr" },
+    { name = "Samuel Pastva", email = "sam.pastva@gmail.com" }
+]
+dependencies = [
+    "clingo",
+    "biodivine-aeon",
+    "argparse",
+]
+[build-system]
+build-backend = "flit_core.buildapi"
+requires = ["flit_core >=3.2,<4"]
