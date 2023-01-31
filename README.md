@@ -51,4 +51,5 @@ effects on the model phenotypes.
 
 ### Benchmarks
 
-TODO
+In the `benchmarks` folder, you can find several Jupyter notebooks with performance 
+comparison between `trapmvn` and other similar tools, like `trappist`, `mpbn` and `an-asp`.
