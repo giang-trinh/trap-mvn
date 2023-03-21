@@ -1,15 +1,115 @@
 from __future__ import annotations
 
 import re
+import random
 from biodivine_aeon import BddVariableSetBuilder # type: ignore
 from trapmvn.representation.petri_net import expand_universal_integers
 from trapmvn.representation.sbml import SBML_Proposition, SBML_Expression, SBML_Term, SBML_Function, CmpOp, LogicOp, SBML_Model
+from trapmvn.representation.bma import BMA_Model
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
-    from typing import Dict, List, Tuple, Union, Optional
-    from trapmvn.representation.sbml import SBML_Model
-    from trapmvn.representation.bma import BMA_Model
+    from typing import Dict, List, Tuple, Union
     from biodivine_aeon import BddVariableSet, Bdd, BddVariable # type: ignore
+
+class Symbolic_Function:
+    ctx: BddVariableSet
+    variable: str
+    booleans: Dict[str, BddVariable]
+    integers: Dict[str, List[BddVariable]]
+    function: List[Bdd]
+    function_inputs: List[str]
+
+    def __init__(
+            self,
+            ctx: BddVariableSet,
+            variable: str,
+            booleans: Dict[str, BddVariable],
+            integers: Dict[str, List[BddVariable]],
+            function: List[Bdd],
+            function_inputs: List[str],
+    ):
+        self.ctx = ctx
+        self.variable = variable
+        self.booleans = booleans
+        self.integers = integers
+        self.function = function
+        self.function_inputs = function_inputs
+
+    @staticmethod
+    def from_model(model: Union[SBML_Model, BMA_Model], variable: str, seed: int | None = None) -> Symbolic_Function:
+        if type(model) == SBML_Model:
+            return Symbolic_Function.from_sbml(model, variable, seed)
+        if type(model) == BMA_Model:
+            return Symbolic_Function.from_bma(model, variable, seed)
+        raise TypeError("Unknown model type")
+
+    @staticmethod
+    def from_sbml(model: SBML_Model, variable: str, seed: int | None = None) -> Symbolic_Function:
+        if variable not in model.functions:
+            # Inputs don't have regulators
+            regulators = []
+        else:
+            regulators = model.functions[variable].inputs.copy()
+
+        relevant_variables = { input: model.variables[input] for input in regulators }
+        relevant_variables[variable] = model.variables[variable]
+
+        (bdd_vars, booleans, integers) = build_symbolic_context(relevant_variables, seed)
+        
+        implicant_bdds = [bdd_vars.mk_const(False) for _ in range(relevant_variables[variable] + 1)]
+        if variable not in model.functions:
+            # This variable is a constant. This means change of value is never possible.
+            return Symbolic_Function(bdd_vars, variable, booleans, integers, implicant_bdds, regulators)
+
+        sbml_function = model.functions[variable]            
+        default_term = bdd_vars.mk_const(True)
+
+        for term in sbml_function.terms:
+            # Build term BDD
+            term_bdd = term.evaluate_symbolic(bdd_vars, booleans, integers)
+            # Clean up any invalid encoding values.
+            for i in sbml_function.inputs:
+                if i in integers:
+                    term_bdd = clean_encoding(bdd_vars, term_bdd, integers[i])
+            # Add the BDD to existing conditions for the result level.
+            implicant_bdds[term.result] = implicant_bdds[term.result].l_or(term_bdd)
+            # And remove it from conditions for the default term.
+            default_term = default_term.l_and_not(term_bdd)
+
+        # Finally, also clean up the default term.
+        for i in sbml_function.inputs:
+            if i in integers:
+                default_term = clean_encoding(bdd_vars, default_term, integers[i])
+
+        # And add it to the correct level BDD.
+        implicant_bdds[sbml_function.default_result] = implicant_bdds[sbml_function.default_result].l_or(default_term)
+
+        return Symbolic_Function(bdd_vars, variable, booleans, integers, implicant_bdds, regulators)
+
+    @staticmethod
+    def from_bma(model: BMA_Model, variable, seed: int | None = None) -> Symbolic_Function:        
+        regulators = model.functions[variable].inputs.copy()
+        relevant_variables = { input: model.variables[input] for input in regulators }
+        relevant_variables[variable] = model.variables[variable]
+
+        (bdd_vars, booleans, integers) = build_symbolic_context(relevant_variables, seed)
+        
+        function_table = model.build_function_table(variable)
+
+        implicant_bdds = [bdd_vars.mk_const(False) for _ in range(relevant_variables[variable] + 1)]
+        for (valuation, output) in function_table:
+            clause = {}
+            for (var, level) in valuation.items():                    
+                if var in booleans:
+                    clause[booleans[var]] = level == 1
+                else:
+                    for i in range(relevant_variables[var] + 1):
+                        level_var = integers[var][i]
+                        clause[level_var] = (i == level)
+            clause_bdd = bdd_vars.mk_conjunctive_clause(clause)
+            implicant_bdds[output] = implicant_bdds[output].l_or(clause_bdd)
+
+        return Symbolic_Function(bdd_vars, variable, booleans, integers, implicant_bdds, regulators)
 
 class Symbolic_Model:
     ctx: BddVariableSet
@@ -17,6 +117,7 @@ class Symbolic_Model:
     integers: Dict[str, List[BddVariable]]
     levels: Dict[str, int]
     functions: Dict[str, List[Bdd]]
+    function_inputs: Dict[str, List[str]]
 
     def __init__(
         self, 
@@ -24,13 +125,15 @@ class Symbolic_Model:
         booleans: Dict[str, BddVariable], 
         integers: Dict[str, List[BddVariable]],
         levels: Dict[str, int],
-        functions: Dict[str, List[Bdd]]
+        functions: Dict[str, List[Bdd]],
+        function_inputs: Dict[str, List[str]],
     ):
         self.ctx = ctx
         self.booleans = booleans
         self.integers = integers
         self.levels = levels
         self.functions = functions
+        self.function_inputs = function_inputs
 
     @staticmethod
     def from_sbml(model: SBML_Model) -> Symbolic_Model:
@@ -39,7 +142,7 @@ class Symbolic_Model:
         levels = model.variables.copy()
         functions = {}        
         for variable in model.variables:
-            implicant_bdds = [bdd_vars.mk_const(False) for x in range(levels[variable] + 1)]
+            implicant_bdds = [bdd_vars.mk_const(False) for _ in range(levels[variable] + 1)]
             if variable not in model.functions:
                 # This variable is a constant. This means change of value is never possible.
                 functions[variable] = implicant_bdds
@@ -69,7 +172,9 @@ class Symbolic_Model:
             implicant_bdds[sbml_function.default_result] = implicant_bdds[sbml_function.default_result].l_or(default_term)
             functions[sbml_function.output] = implicant_bdds
 
-        return Symbolic_Model(bdd_vars, booleans, integers, levels, functions)
+        function_inputs = { v:f.inputs for (v,f) in model.functions.items() }
+
+        return Symbolic_Model(bdd_vars, booleans, integers, levels, functions, function_inputs)
             
 
         
@@ -82,7 +187,7 @@ class Symbolic_Model:
         for variable in model.variables:
             function_table = model.build_function_table(variable)
 
-            implicant_bdds = [bdd_vars.mk_const(False) for x in range(levels[variable] + 1)]
+            implicant_bdds = [bdd_vars.mk_const(False) for _ in range(levels[variable] + 1)]
             for (valuation, output) in function_table:
                 clause = {}
                 for (var, level) in valuation.items():                    
@@ -97,7 +202,9 @@ class Symbolic_Model:
             
             functions[variable] = implicant_bdds
 
-        return Symbolic_Model(bdd_vars, booleans, integers, levels, functions)
+        function_inputs = { v:f.inputs for (v,f) in model.functions.items() }
+
+        return Symbolic_Model(bdd_vars, booleans, integers, levels, functions, function_inputs)
 
     def to_sbml(self) -> SBML_Model:
         variables = self.levels.copy()
@@ -141,7 +248,7 @@ class Symbolic_Model:
                 if bdd.is_false():
                     continue
                 disjunction: List[Union[SBML_Expression, SBML_Proposition]] = []
-                for bdd in expand_universal_integers(self.ctx, self.integers, bdd):                    
+                for bdd in expand_universal_integers(self.ctx, self.integers, self.function_inputs[var], bdd):                    
                     for clause in bdd.list_sat_clauses():
                         literals: List[Union[SBML_Expression, SBML_Proposition]] = []
                         for (bdd_var, value) in clause:
@@ -178,12 +285,17 @@ class Symbolic_Model:
         return SBML_Model(variables, functions)
 
 
-def build_symbolic_context(levels: Dict[str, int]) -> Tuple[BddVariableSet, Dict[str, BddVariable], Dict[str, List[BddVariable]]]:
+def build_symbolic_context(levels: Dict[str, int], seed: int | None = None) -> Tuple[BddVariableSet, Dict[str, BddVariable], Dict[str, List[BddVariable]]]:
     """
         Build the basis of the symbolic encoding (the BDD variables) for the given variable space.
     """
-    # Ensures deterministic variable order.
-    variables = list(sorted(levels.keys()))
+    # Ensures deterministic variable order with optional shuffle.
+    if seed is None:
+        variables = list(sorted(levels.keys()))
+    else:
+        rng = random.Random(seed)
+        variables = list(levels.keys())
+        rng.shuffle(variables)
 
     # Dictionary which maps Boolean BMA variables to their BDD counterparts.
     booleans = {}

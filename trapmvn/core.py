@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from trapmvn.representation.petri_net import Petri_Net
-from trapmvn.representation.symbolic import Symbolic_Model
+from trapmvn.representation.symbolic import Symbolic_Model, Symbolic_Function
 from trapmvn.representation.bma import BMA_Model
 from trapmvn.representation.sbml import SBML_Model
 from typing import Dict, List, Tuple, Union, Callable, Optional
@@ -63,18 +63,36 @@ def _normalize_model(model: Union[Petri_Net, Symbolic_Model, SBML_Model, BMA_Mod
         Convert arbitrary model type to a valid petri net.
     """
     assert semantics in ["unitary", "general"]    
+    if type(model) == SBML_Model or type(model) == BMA_Model:
+        return _optimized_translation(model, semantics == "unitary")
     if type(model) == Petri_Net:
         return model
     if type(model) == Symbolic_Model:
         symbolic_model = model
+        return Petri_Net.build(symbolic_model, semantics == "unitary")
     else:
-        if type(model) == SBML_Model:
-            symbolic_model = Symbolic_Model.from_sbml(model)
-        elif type(model) == BMA_Model:
-            symbolic_model = Symbolic_Model.from_bma(model)
-        else:
-            raise Exception(f"Unknown model type: `{type(model)}`.")
-    return Petri_Net.build(symbolic_model, semantics == "unitary")
+        raise TypeError("Unknown type of model.")
+
+def _optimized_translation(model: Union[SBML_Model, BMA_Model], unitary: bool) -> Petri_Net:
+    """
+        Test multiple encodings for each function and then pick the one which produces the least amount of implicants.
+    """
+    nets = []
+    for variable in model.variables:
+        candidate_encodings = [Symbolic_Function.from_model(model, variable)]
+        arity = len(model.functions[variable].inputs) if variable in model.functions else 0
+        for i in range(1, arity):
+            candidate_encodings.append(Symbolic_Function.from_model(model, variable, seed=i))
+        candidate_networks = [Petri_Net.for_function(f, unitary) for f in candidate_encodings]        
+        candidate_networks = sorted(candidate_networks, key=lambda pn: pn.count_implicants(variable))
+        nets.append(candidate_networks[0])
+        
+
+    pn = nets[0]
+    for extra in nets[1:]:
+        pn = pn.merge(extra)
+    return pn
+
 
 def _decode_result(result: Model, petri_net: Petri_Net) -> Dict[str, List[int]]:
     """
