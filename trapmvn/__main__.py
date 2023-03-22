@@ -82,6 +82,7 @@ total = 0
 
 def print_space(space):        
     global total
+    space = space.decode()
     print('\t'.join([ str(space[var]) for var in variables ]))
     total += 1
     return limit == 0 or total < limit

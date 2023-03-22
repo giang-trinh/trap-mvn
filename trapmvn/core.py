@@ -5,7 +5,32 @@ from trapmvn.representation.symbolic import Symbolic_Model, Symbolic_Function
 from trapmvn.representation.bma import BMA_Model
 from trapmvn.representation.sbml import SBML_Model
 from typing import Dict, List, Tuple, Union, Callable, Optional
-from clingo import Control, Model, SolveHandle
+from clingo import Control, Model, SolveHandle, Symbol, String
+
+class Trap:
+    mirror: bool
+    model: Model
+    net: Petri_Net
+
+    def __init__(self, net: Petri_Net, model: Model, mirror: bool):
+        self.model = model
+        self.mirror = mirror
+        self.net = net
+
+    def decode(self) -> Dict[str, List[int]]:
+        if self.mirror:
+            return _decode_result_mirror(self.model, self.net)
+        else:
+            return _decode_result(self.model, self.net)
+
+    def contains(self, variable: str, value: int) -> bool:
+        result = self.model.contains(String(self.net.place_map[variable][value]))
+        if self.mirror:
+            result = not result
+        return result
+
+    def __str__(self) -> str:
+        return str(self.decode())
 
 def trapmvn(
     model: Union[Petri_Net, Symbolic_Model, SBML_Model, BMA_Model],
@@ -13,7 +38,7 @@ def trapmvn(
     semantics: str = "unitary",
     problem: str = "min",
     fixed_point_method: str = "deadlock"
-) -> List[Dict[str, List[int]]]:
+) -> List[Trap]:
     """
         Analyse the given `model`, returning a list of trap spaces.
 
@@ -34,7 +59,7 @@ def trapmvn(
 
 def trapmvn_async(
     model: Union[Petri_Net, Symbolic_Model, SBML_Model, BMA_Model],
-    on_solution: Callable[[Dict[str, List[int]]], bool],
+    on_solution: Callable[[Trap], bool],
     semantics: str = "unitary",
     problem: str = "min",
     fixed_point_method: str = "deadlock"
@@ -51,9 +76,9 @@ def trapmvn_async(
         with result as iterator:
             for clingo_model in iterator:                    
                 if problem == "fix" and fixed_point_method == "deadlock":
-                    space = _decode_result(clingo_model, petri_net)
+                    space = Trap(petri_net, clingo_model, mirror=False)
                 else:
-                    space = _decode_result_mirror(clingo_model, petri_net)
+                    space = Trap(petri_net, clingo_model, mirror=True)
                 if not on_solution(space):
                     break
     # Else: unsat, hence we don't do anything.
