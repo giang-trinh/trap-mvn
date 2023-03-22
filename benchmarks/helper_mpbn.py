@@ -10,6 +10,6 @@ if computation == "fix":
     tspaces = mbn.fixedpoints(limit=max_output)
 else:
     tspaces = mbn.attractors(limit=max_output)
-tspaces = list(tspaces)
-for s in tspaces:
-    print(s)
+
+count = sum(1 for _ in tspaces)
+print(count)
