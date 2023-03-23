@@ -27,8 +27,8 @@ def run_benchmark(output: str, REPETITIONS, TIMEOUT, SOLUTIONS):
             trapmvn_siphon = bench_trapmvn(model, semantics="unitary", problem="fix", fix="siphon", REPETITIONS=REPETITIONS, TIMEOUT=TIMEOUT, SOLUTIONS=SOLUTIONS)
             trapmvn_deadlock = bench_trapmvn(model, semantics="unitary", problem="fix", fix="deadlock", REPETITIONS=REPETITIONS, TIMEOUT=TIMEOUT, SOLUTIONS=SOLUTIONS)        
             row += [str(trapmvn_siphon), str(trapmvn_deadlock)]
-            trappist_1 = bench_trappist(model, fix="1", REPETITIONS=REPETITIONS, TIMEOUT=TIMEOUT, SOLUTIONS=SOLUTIONS)
-            trappist_2 = bench_trappist(model, fix="2", REPETITIONS=REPETITIONS, TIMEOUT=TIMEOUT, SOLUTIONS=SOLUTIONS)
+            trappist_1 = bench_trappist(model, problem="fix", fix="1", REPETITIONS=REPETITIONS, TIMEOUT=TIMEOUT, SOLUTIONS=SOLUTIONS)
+            trappist_2 = bench_trappist(model, problem="fix", fix="2", REPETITIONS=REPETITIONS, TIMEOUT=TIMEOUT, SOLUTIONS=SOLUTIONS)
             row += [str(trappist_1), str(trappist_2)]
             mpbn = bench_mpbn(model, problem="fix", REPETITIONS=REPETITIONS, TIMEOUT=TIMEOUT, SOLUTIONS=SOLUTIONS)
             row += [str(mpbn)]
