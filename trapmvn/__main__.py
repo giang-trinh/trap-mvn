@@ -67,7 +67,10 @@ if isinstance(infile, str):
         model = BMA_Model.from_json_file(infile)
     else:
         raise Exception("Unknown file format. Only SBML (XML) and BMA (JSON) files are supported.")
-else:
+elif infile.name.endswith(".json") or infile.name.endswith(".bma"):
+    model = BMA_Model.from_json_str(infile.read())
+    infile.close()
+else:    
     # "Default" behaviour is to expect SBML files.
     model = SBML_Model.from_string(infile.read())
     infile.close()
