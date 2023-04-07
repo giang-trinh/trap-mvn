@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import re
 import random
-from biodivine_aeon import BddVariableSetBuilder # type: ignore
+from biodivine_aeon import BddVariableSetBuilder, RegulatoryGraph # type: ignore
 from trapmvn.representation.petri_net import expand_universal_integers
 from trapmvn.representation.sbml import SBML_Proposition, SBML_Expression, SBML_Term, SBML_Function, CmpOp, LogicOp, SBML_Model
 from trapmvn.representation.bma import BMA_Model
@@ -283,6 +283,125 @@ class Symbolic_Model:
             functions[var] = function
         
         return SBML_Model(variables, functions)
+
+    def infer_influence_graph(self) -> RegulatoryGraph:
+        """
+        Compute an influence graph (represented using AEON's `RegulatoryGraph`) which
+        contains the exact monotonicity properties of each update function.
+        """
+        variables = list(self.levels.keys())
+        rg = RegulatoryGraph(variables)
+
+        for var in variables: 
+            var_function = self.functions[var]
+            # Infer "observable" regulators for `var`.
+            supports = set()
+            for bdd in var_function:
+                supports.update(bdd.support_set())
+            regulators = set()
+            for reg, v in self.booleans.items():
+                if v in supports:
+                    regulators.add(reg)
+            for reg, l in self.integers.items():
+                for v in l:
+                    if v in supports:
+                        regulators.add(reg)
+            # Infer monotonicity of each regulator.
+            for reg in regulators:
+                # To test activation, we literally verify
+                # that given `f(x) = y` where `x[reg] = a`,
+                # for every `z > y` and `b > a`, we don't
+                # have `f(x[reg=b])=z`.
+                is_activation = True
+                if reg in self.booleans:
+                    # If the regulator is a Boolean, there is only
+                    # one symbolic variable to test.
+                    reg_var = self.booleans[reg]
+                    for target_low_level in range(self.levels[var] + 1):
+                        # Regulator is high in the lower target value.
+                        low_level_bdd = var_function[target_low_level].var_restrict(reg_var, True)
+                        for target_higher_level in range(target_low_level + 1, self.levels[var] + 1):
+                            # Regulator is low in the higher target value.
+                            high_level_bdd = var_function[target_higher_level].var_restrict(reg_var, False)
+                            if not low_level_bdd.l_and(high_level_bdd).is_false():
+                                # There two things cannot happen for the same combination of
+                                # remaining inputs.
+                                is_activation = False
+                else:
+                    reg_vars = self.integers[reg]
+                    for reg_high in range(self.levels[reg] + 1):
+                        # reg_high is the level from which the regulator
+                        # should decrease when ruling out activation.
+                        for target_low_level in range(self.levels[var] + 1):
+                            # Regulator is at `reg_high` level in the lower target value.
+                            low_level_bdd = var_function[target_low_level]
+                            low_level_bdd = low_level_bdd.var_select(reg_vars[reg_high], True)
+                            low_level_bdd = low_level_bdd.project(reg_vars)
+                            for target_higher_level in range(target_low_level + 1, self.levels[var] + 1):
+                                # Regulator is at any lower level in the higher target value.
+                                high_level_bdd = var_function[target_higher_level]
+                                reg_is_lower = self.ctx.mk_disjunctive_clause({ x:True for x in reg_vars[:reg_high] })
+                                high_level_bdd = high_level_bdd.l_and(reg_is_lower).project(reg_vars)                                
+                                if not low_level_bdd.l_and(high_level_bdd).is_false():                                    
+                                    is_activation = False                                    
+
+                # Inhibition is the same, except the regulator must not go "up"
+                # in the higher levels instead of "down"
+                is_inhibition = True
+                if reg in self.booleans:
+                    reg_var = self.booleans[reg]
+                    for target_low_level in range(self.levels[var] + 1):
+                        # Regulator is low at the lower target level.
+                        low_level_bdd = var_function[target_low_level].var_restrict(reg_var, False)
+                        for target_higher_level in range(target_low_level + 1, self.levels[var] + 1):
+                            # Regulator is high at the higher target level.
+                            high_level_bdd = var_function[target_higher_level].var_restrict(reg_var, True)
+                            if not low_level_bdd.l_and(high_level_bdd).is_false():
+                                is_inhibition = False
+                else:
+                    reg_vars = self.integers[reg]
+                    for reg_low in range(self.levels[reg] + 1):
+                        for target_low_level in range(self.levels[var] + 1):
+                            low_level_bdd = var_function[target_low_level]
+                            low_level_bdd = low_level_bdd.var_select(reg_vars[reg_low], True)
+                            low_level_bdd = low_level_bdd.project(reg_vars)
+                            for target_higher_level in range(target_low_level + 1, self.levels[var] + 1):
+                                high_level_bdd = var_function[target_higher_level]
+                                reg_is_higher = self.ctx.mk_disjunctive_clause({ x:True for x in reg_vars[reg_low+1:] })
+                                high_level_bdd = high_level_bdd.l_and(reg_is_higher).project(reg_vars)
+                                if not low_level_bdd.l_and(high_level_bdd).is_false():                                    
+                                    is_inhibition = False  
+
+                assert not (is_activation and is_inhibition)
+
+                if is_activation:
+                    rg.add_regulation({
+                            'source': reg,
+                            'target': var,
+                            'monotonicity': 'activation',
+                            'observable': True
+                    })
+                elif is_inhibition:
+                    rg.add_regulation({
+                            'source': reg,
+                            'target': var,
+                            'monotonicity': 'inhibition',
+                            'observable': True
+                    })
+                else:
+                    rg.add_regulation({
+                            'source': reg,
+                            'target': var,
+                            'observable': True
+                    })
+        return rg
+                
+                
+
+
+            
+
+
 
 
 def build_symbolic_context(levels: Dict[str, int], seed: int | None = None) -> Tuple[BddVariableSet, Dict[str, BddVariable], Dict[str, List[BddVariable]]]:
