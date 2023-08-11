@@ -57,13 +57,13 @@ class Petri_Net:
             # Consider 0 -> 1 transition.
             # The restriction ensures only relevant implicants are supplied
             # while the modified variable itself does not appear in them.                        
-            bdd = function.function[1].var_restrict(bdd_var, False)
+            bdd = function.function[1].restrict({ bdd_var: False })
             implicants = []
             for bdd in expand_universal_integers(function.ctx, function.integers, regulators, bdd):                
                 implicants += list_implicants(function.ctx, boolean_bdd_variables, bdd)                    
             var_implicants[(0, 1)] = implicants
             # Consider 1 -> 0 transition.
-            bdd = function.function[0].var_restrict(bdd_var, True)
+            bdd = function.function[0].restrict({ bdd_var: True })
             implicants = []
             for bdd in expand_universal_integers(function.ctx, function.integers, regulators, bdd):
                 implicants += list_implicants(function.ctx, boolean_bdd_variables, bdd)
@@ -158,13 +158,13 @@ class Petri_Net:
             # Consider 0 -> 1 transition.
             # The restriction ensures only relevant implicants are supplied
             # while the modified variable itself does not appear in them.                        
-            bdd = model.functions[var][1].var_restrict(bdd_var, False)
+            bdd = model.functions[var][1].restrict({ bdd_var: False })
             implicants = []
             for bdd in expand_universal_integers(model.ctx, model.integers, regulators, bdd):                
                 implicants += list_implicants(model.ctx, boolean_bdd_variables, bdd)                    
             var_implicants[(0, 1)] = implicants
             # Consider 1 -> 0 transition.
-            bdd = model.functions[var][0].var_restrict(bdd_var, True)
+            bdd = model.functions[var][0].restrict({ bdd_var: True })
             implicants = []
             for bdd in expand_universal_integers(model.ctx, model.integers, regulators, bdd):
                 implicants += list_implicants(model.ctx, boolean_bdd_variables, bdd)
@@ -302,9 +302,9 @@ def list_implicants(ctx: BddVariableSet, boolean_bdd_vars: Set[BddVariable], bdd
         Use `prune_invalid` first to remove such valuations.
     """
     result = []
-    for clause in bdd.list_sat_clauses():
+    for clause in bdd.clause_iterator():
         implicant = []
-        for (bdd_var, value) in clause:
+        for (bdd_var, value) in clause.into_list():
             if bdd_var in boolean_bdd_vars:
                 # Boolean variables have to be expanded.
                 if value:

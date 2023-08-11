@@ -249,9 +249,9 @@ class Symbolic_Model:
                     continue
                 disjunction: List[Union[SBML_Expression, SBML_Proposition]] = []
                 for bdd in expand_universal_integers(self.ctx, self.integers, self.function_inputs[var], bdd):                    
-                    for clause in bdd.list_sat_clauses():
+                    for clause in bdd.clause_iterator():
                         literals: List[Union[SBML_Expression, SBML_Proposition]] = []
-                        for (bdd_var, value) in clause:
+                        for (bdd_var, value) in clause.into_list():
                             if bdd_var in boolean_bdd_variables:
                                 # For Boolean variables, the name should be the same,
                                 # just string the first 'p'.
@@ -308,11 +308,11 @@ def build_symbolic_context(levels: Dict[str, int], seed: int | None = None) -> T
         if max_level == 1:
             # Boolean variables are expanded later when implicants are constructed 
             # (it keeps the BDDs smaller).
-            v = bdd_vars_builder.make_variable(f"p{var}")
+            v = bdd_vars_builder.make(f"p{var}")
             booleans[var] = v
         else:
             # Integer variables are expanded into `k` distinct Boolean variables immediately.
-            integers[var] = bdd_vars_builder.make([f"p{var}_b{x}" for x in range(max_level + 1)])
+            integers[var] = bdd_vars_builder.make_all([f"p{var}_b{x}" for x in range(max_level + 1)])
     return (bdd_vars_builder.build(), booleans, integers)
 
 def clean_encoding(ctx: BddVariableSet, bdd: Bdd, symbolic: List[BddVariable]) -> Bdd:

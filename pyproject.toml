@@ -8,7 +8,7 @@ authors = [
 ]
 dependencies = [
     "clingo",
-    "biodivine-aeon",
+    "biodivine-aeon>=0.2.0, <0.3",
     "argparse",
 ]
 [build-system]
