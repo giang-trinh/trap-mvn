@@ -304,7 +304,7 @@ class SBML_Expression:
                 args.append(arg.evaluate_symbolic(ctx, booleans, integers))
 
         if self.operator == LogicOp.NOT:
-            return args[0].negation()
+            return args[0].l_not()
         if self.operator == LogicOp.AND:
             result = ctx.mk_const(True)
             for arg in args:
