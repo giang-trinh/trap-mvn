@@ -13,13 +13,13 @@ parser.add_argument(
     default=0,
     help="Maximum number of solutions (0 for all).",
 )
-#parser.add_argument(
+# parser.add_argument(
 #    "-t",
 #    "--time",
 #    type=int,
 #    default=0,
 #    help="Maximum number of seconds for search (0 for no-limit).",
-#)
+# )
 parser.add_argument(
     "-c",
     "--computation",
@@ -66,11 +66,13 @@ if isinstance(infile, str):
     elif infile.endswith(".json") or infile.endswith(".bma"):
         model = BMA_Model.from_json_file(infile)
     else:
-        raise Exception("Unknown file format. Only SBML (XML) and BMA (JSON) files are supported.")
+        raise Exception(
+            "Unknown file format. Only SBML (XML) and BMA (JSON) files are supported."
+        )
 elif infile.name.endswith(".json") or infile.name.endswith(".bma"):
     model = BMA_Model.from_json_str(infile.read())
     infile.close()
-else:    
+else:
     # "Default" behaviour is to expect SBML files.
     model = SBML_Model.from_string(infile.read())
     infile.close()
@@ -78,16 +80,18 @@ else:
 variables = sorted(model.variables.keys())
 
 # Print header.
-print('\t'.join(variables))
+print("\t".join(variables))
 
 # Function to print individual trap spaces.
 total = 0
 
-def print_space(space):        
+
+def print_space(space):
     global total
     space = space.decode()
-    print('\t'.join([ str(space[var]) for var in variables ]))
+    print("\t".join([str(space[var]) for var in variables]))
     total += 1
     return limit == 0 or total < limit
+
 
 trapmvn_async(model, print_space, semantics, problem, fixed_point_method)
