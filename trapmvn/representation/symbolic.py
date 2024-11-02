@@ -2,14 +2,14 @@ from __future__ import annotations
 
 import re
 import random
-from biodivine_aeon import BddVariableSetBuilder # type: ignore
+from biodivine_aeon import BddVariableSetBuilder
 from trapmvn.representation.petri_net import expand_universal_integers
 from trapmvn.representation.sbml import SBML_Proposition, SBML_Expression, SBML_Term, SBML_Function, CmpOp, LogicOp, SBML_Model
 from trapmvn.representation.bma import BMA_Model
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from typing import Dict, List, Tuple, Union
-    from biodivine_aeon import BddVariableSet, Bdd, BddVariable # type: ignore
+    from biodivine_aeon import BddVariableSet, Bdd, BddVariable
 
 class Symbolic_Function:
     ctx: BddVariableSet
@@ -251,11 +251,11 @@ class Symbolic_Model:
                 for bdd in expand_universal_integers(self.ctx, self.integers, self.function_inputs[var], bdd):                    
                     for clause in bdd.clause_iterator():
                         literals: List[Union[SBML_Expression, SBML_Proposition]] = []
-                        for (bdd_var, value) in clause.into_list():
+                        for (bdd_var, value) in clause.items():
                             if bdd_var in boolean_bdd_variables:
                                 # For Boolean variables, the name should be the same,
                                 # just string the first 'p'.
-                                name = self.ctx.name_of(bdd_var)[1:]
+                                name = self.ctx.get_variable_name(bdd_var)[1:]
                                 inputs.add(name)
                                 literals.append(SBML_Proposition(name, CmpOp.EQ, int(value)))
                             else:                                
@@ -263,12 +263,12 @@ class Symbolic_Model:
                                 # We also only take positive literals, as negative literals
                                 # are there mostly to ensure correct encoding.
                                 if value:
-                                    m = re.match('p(.+?)_b(\\d+)', self.ctx.name_of(bdd_var))
+                                    m = re.match('p(.+?)_b(\\d+)', self.ctx.get_variable_name(bdd_var))
                                     assert m is not None
                                     name = m[1]
-                                    value = int(m[2])
+                                    value_int = int(m[2])
                                     inputs.add(name)
-                                    literals.append(SBML_Proposition(name, CmpOp.EQ, value))                                    
+                                    literals.append(SBML_Proposition(name, CmpOp.EQ, value_int))
                         disjunction.append(SBML_Expression(LogicOp.AND, literals))   
                 if len(disjunction) > 0:
                     term = SBML_Term(result_level, SBML_Expression(LogicOp.OR, disjunction))
@@ -308,11 +308,11 @@ def build_symbolic_context(levels: Dict[str, int], seed: int | None = None) -> T
         if max_level == 1:
             # Boolean variables are expanded later when implicants are constructed 
             # (it keeps the BDDs smaller).
-            v = bdd_vars_builder.make(f"p{var}")
+            v = bdd_vars_builder.add(f"p{var}")
             booleans[var] = v
         else:
             # Integer variables are expanded into `k` distinct Boolean variables immediately.
-            integers[var] = bdd_vars_builder.make_all([f"p{var}_b{x}" for x in range(max_level + 1)])
+            integers[var] = bdd_vars_builder.add_all([f"p{var}_b{x}" for x in range(max_level + 1)])
     return (bdd_vars_builder.build(), booleans, integers)
 
 def clean_encoding(ctx: BddVariableSet, bdd: Bdd, symbolic: List[BddVariable]) -> Bdd:
@@ -333,6 +333,6 @@ def clean_encoding(ctx: BddVariableSet, bdd: Bdd, symbolic: List[BddVariable]) -
     # Ensure that at least one encoded variable is true.
     # a=1 | b=1 | c=1 | ...
     at_least_one = { x:True for x in symbolic }
-    at_least_one = ctx.mk_disjunctive_clause(at_least_one) 
-    bdd = bdd.l_and(at_least_one)
+    at_least_one_bdd = ctx.mk_disjunctive_clause(at_least_one) 
+    bdd = bdd.l_and(at_least_one_bdd)
     return bdd

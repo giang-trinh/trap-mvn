@@ -4,12 +4,12 @@ from enum import Enum
 import xml.etree.ElementTree as ET # type: ignore
 from xml.etree.ElementTree import Element as XmlElement # type: ignore
 from xml.etree.ElementTree import ElementTree as XmlTree # type: ignore
-from biodivine_aeon import BddVariable # type: ignore
+from biodivine_aeon import BddVariable
 
 from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from typing import Dict, List, Union, Optional
-    from biodivine_aeon import Bdd, BddVariableSet # type: ignore
+    from biodivine_aeon import Bdd, BddVariableSet
 
 NS_SBML = "http://www.sbml.org/sbml/level3/version1/core"
 NS_SBML_QUAL = "http://www.sbml.org/sbml/level3/version1/qual/version1"
@@ -307,13 +307,13 @@ class SBML_Expression:
             return args[0].l_not()
         if self.operator == LogicOp.AND:
             result = ctx.mk_const(True)
-            for arg in args:
-                result = result.l_and(arg)
+            for bdd_arg in args:
+                result = result.l_and(bdd_arg)
             return result
         if self.operator == LogicOp.OR:
             result = ctx.mk_const(False)
-            for arg in args:
-                result = result.l_or(arg)
+            for bdd_arg in args:
+                result = result.l_or(bdd_arg)
             return result
         if self.operator == LogicOp.IMPLIES:
             return args[0].l_imp(args[1])
